@@ -1,10 +1,10 @@
-name = "cursorhustle"
-compatibility_date = "2024-09-21"
+name = "indiepilot"
+compatibility_date = "2024-11-28"
 compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = ".vercel/output/static"
 
 [[d1_databases]]
 binding = "MY_DB"
-database_name = "cursorhustle"
-database_id = "e94c8997-1dc5-4b49-ad93-85bfbb0d30e8"
+database_name = "blog-1"
+database_id = "15ba1757-3c23-4fb6-9980-d7ee029016fd"
 migrations_dir = "./db/migrations"

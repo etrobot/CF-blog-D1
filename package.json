@@ -10,27 +10,29 @@
     "pages:build": "npx @cloudflare/next-on-pages",
     "preview": "npm run pages:build && wrangler pages dev",
     "deploy": "npm run pages:build && wrangler pages deploy",
+    "sqlite:gen": "drizzle-kit generate --config drizzle.config.sqlite.ts",
     "sqlite:push": "drizzle-kit push --config drizzle.config.sqlite.ts",
     "sqlite:studio": "drizzle-kit studio --config drizzle.config.sqlite.ts"
   },
   "dependencies": {
-    "@cloudflare/workers-types": "^4.20240909.0",
-    "@libsql/client": "^0.10.0",
-    "drizzle-orm": "^0.33.0",
-    "next": "14.2.10",
-    "react": "^18",
-    "react-dom": "^18"
+    "@cloudflare/workers-types": "^4.20240208.0",
+    "@libsql/client": "^0.14.0",
+    "drizzle-orm": "^0.29.3",
+    "next": "14.2.18",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@cloudflare/next-on-pages": "^1.13.2",
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "drizzle-kit": "^0.24.2",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.10",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
-    "typescript": "^5"
+    "@cloudflare/next-on-pages": "^1.13.6",
+    "@types/node": "^22.10.1",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@typescript-eslint/parser": "^8.16.0",
+    "drizzle-kit": "^0.20.14",
+    "eslint": "^9.15.0",
+    "eslint-config-next": "14.2.18",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.15",
+    "typescript": "^5.7.2"
   }
 }
