@@ -36,6 +36,7 @@ export const products = sqliteTable('product', {
   launchDate: integer('launch_date', { mode: 'timestamp' }),
   websiteUrl: text('website_url'),
   avatarUrl: text('avatar_url'),
+  screenshotUrl: text('screenshot_url'),
   socialMedia: blob('social_media'),
   createdAt: integer('created_at', { mode: 'timestamp' }),
   updatedAt: integer('updated_at', { mode: 'timestamp' })

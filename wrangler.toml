@@ -5,6 +5,6 @@ pages_build_output_dir = ".vercel/output/static"
 
 [[d1_databases]]
 binding = "MY_DB"
-database_name = "blog-1"
-database_id = "15ba1757-3c23-4fb6-9980-d7ee029016fd"
+database_name = "ai-directory"
+database_id = "de2e59fe-14ef-4db4-a80c-0d9ed4979d6f"
 migrations_dir = "./db/migrations"
