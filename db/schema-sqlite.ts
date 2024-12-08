@@ -38,6 +38,7 @@ export const products = sqliteTable('product', {
   avatarUrl: text('avatar_url'),
   screenshotUrl: text('screenshot_url'),
   socialMedia: blob('social_media'),
+  tier: integer('tier'),//0-free,1-paid,2-free&paid
   createdAt: integer('created_at', { mode: 'timestamp' }),
   updatedAt: integer('updated_at', { mode: 'timestamp' })
 });

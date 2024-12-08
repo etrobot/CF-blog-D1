@@ -7,6 +7,7 @@ CREATE TABLE `blog` (
 	`summary` text,
 	`cover_url` text,
 	`tags` text,
+	`tier` integer,//0-free,1-paid,2-free&paid
 	`author_id` integer,
 	`created_at` integer,
 	`updated_at` integer,
