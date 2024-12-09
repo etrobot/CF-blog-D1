@@ -1,7 +1,7 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "71bfd645-678f-4b75-859b-ffb53102ecab",
+  "id": "18446773-2b05-4c44-bfe6-9ca03ec0fd23",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "blog": {
@@ -386,6 +386,13 @@
         "social_media": {
           "name": "social_media",
           "type": "blob",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "tier": {
+          "name": "tier",
+          "type": "integer",
           "primaryKey": false,
           "notNull": false,
           "autoincrement": false

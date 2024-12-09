@@ -1,4 +1,4 @@
-name = "indiepilot"
+name = "aicube"
 compatibility_date = "2024-11-28"
 compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = ".vercel/output/static"
@@ -8,3 +8,12 @@ binding = "MY_DB"
 database_name = "ai-directory"
 database_id = "de2e59fe-14ef-4db4-a80c-0d9ed4979d6f"
 migrations_dir = "./db/migrations"
+
+# 添加本地开发配置
+[env.preview.d1_databases]
+binding = "MY_DB"
+database_name = "ai-directory"
+database_id = "de2e59fe-14ef-4db4-a80c-0d9ed4979d6f"
+migrations_dir = "./db/migrations"
+# 指定本地数据库文件路径
+database_filename = ".dev.db"

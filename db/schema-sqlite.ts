@@ -1,6 +1,10 @@
 import { sqliteTable, text, integer, blob } from 'drizzle-orm/sqlite-core';
 import { drizzle } from 'drizzle-orm/d1';
-import { D1Database } from '@cloudflare/workers-types';
+import { type D1Database } from '@cloudflare/workers-types';
+
+declare global {
+  var DB: D1Database | undefined;
+}
 
 export const tag = sqliteTable('tag', {
   name: text('name').primaryKey(),
@@ -29,12 +33,12 @@ export const developers = sqliteTable('developer', {
 
 export const products = sqliteTable('product', {
   id: integer('id').primaryKey({ autoIncrement: true }),
-  name: text('name'),
+  name: text('name').notNull(),
   description: text('description'),
   tags: text('tags'),
-  category: text('category'),
+  category: text('category').notNull(),
   launchDate: integer('launch_date', { mode: 'timestamp' }),
-  websiteUrl: text('website_url'),
+  websiteUrl: text('website_url').notNull(),
   avatarUrl: text('avatar_url'),
   screenshotUrl: text('screenshot_url'),
   socialMedia: blob('social_media'),
@@ -67,5 +71,3 @@ export const blog = sqliteTable('blog', {
   createdAt: integer('created_at', { mode: 'timestamp' }),
   updatedAt: integer('updated_at', { mode: 'timestamp' })
 });
-
-export const db = drizzle(process.env.MY_DB as unknown as D1Database);

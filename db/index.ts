@@ -1,21 +1,19 @@
-import { D1Database, D1Result } from '@cloudflare/workers-types';
+import { getRequestContext } from '@cloudflare/next-on-pages'
+import { drizzle } from 'drizzle-orm/d1'
 
-let db: D1Database;
+import * as schema from '@/db/schema-sqlite'
 
-export function initializeDB(database: D1Database) {
-  db = database;
-}
+export const runtime = 'edge'
 
-export async function query(sql: string, params?: any[]): Promise<D1Result> {
-  if (!db) {
-    throw new Error('database initialization error');
+export function initDbConnection() {
+  if (process.env.NODE_ENV === 'development') {
+    const { env: requestEnv } = getRequestContext()
+
+    // @ts-expect-error DB is exist
+    return drizzle(requestEnv.MY_DB, { schema })
   }
-  return await db.prepare(sql).bind(params || []).all();
+
+  return drizzle(process.env.MY_DB as unknown as D1Database, { schema })
 }
 
-export async function execute(sql: string, params?: any[]): Promise<D1Result> {
-  if (!db) {
-    throw new Error('database initialization error');
-  }
-  return await db.prepare(sql).bind(params || []).run();
-}
+export const db = initDbConnection()
