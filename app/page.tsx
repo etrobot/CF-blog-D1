@@ -1,7 +1,7 @@
 import { db } from '@/db'
 import ProductCard from '@/components/ProductCard'
 import { products as productsTable } from '@/db/schema-sqlite'
-import { count, eq } from 'drizzle-orm';
+import { count, eq, and } from 'drizzle-orm';
 import Footer from '@/components/footer'
 
 export const runtime = 'edge'
@@ -9,17 +9,27 @@ export const runtime = 'edge'
 export default async function Home({
   searchParams,
 }: {
-  searchParams: { page?: string, cat?: string }
+  searchParams: { page?: string, cat?: string, tier?: string }
 }) {
   const currentPage = Number(searchParams.page) || 1;
   const selectedCategory = searchParams.cat || '';
+  const selectedTier = searchParams.tier || '';
   const pageSize = 6;
   
   const totalProducts = await db.select({ count: count() }).from(productsTable);
   const totalPages = Math.ceil(totalProducts[0].count / pageSize);
   
   const products = await db.query.products.findMany({
-    where: selectedCategory ? (fields) => eq(fields.category, selectedCategory) : undefined,
+    where: (fields) => {
+      const conditions = [];
+      if (selectedCategory) {
+        conditions.push(eq(fields.category, selectedCategory));
+      }
+      if (selectedTier) {
+        conditions.push(eq(fields.tier, Number(selectedTier)));
+      }
+      return conditions.length > 0 ? and(...conditions) : undefined;
+    },
     orderBy: (products, { desc }) => [desc(products.createdAt)],
     limit: pageSize,
     offset: (currentPage - 1) * pageSize,
@@ -44,6 +54,16 @@ export default async function Home({
                 {category.name}
               </option>
             ))}
+          </select>
+          <select
+            name="tier"
+            defaultValue={selectedTier}
+            className="px-4 py-2 border rounded text-black"
+          >
+            <option value="">All Tiers</option>
+            <option value="0">Free</option>
+            <option value="1">Paid</option>
+            <option value="2">Free & Paid</option>
           </select>
           <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded">
             Filter
