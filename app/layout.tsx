@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Navbar from '@/components/navbar';
 import localFont from "next/font/local";
 import "./globals.css";
 import { GoogleAnalytics } from '@next/third-parties/google'
@@ -29,6 +30,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Navbar />
         {children}
         <GoogleAnalytics gaId="G-D6W5L8YCC4" />
       </body>
