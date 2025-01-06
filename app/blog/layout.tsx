@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Client } from '@notionhq/client';
-import Navbar from '@/components/navbar';
-import { notionapi } from "@/lib/notion";
 
 // Initialize Notion client
 const notion = new Client({ auth: process.env.NOTION_API_KEY });

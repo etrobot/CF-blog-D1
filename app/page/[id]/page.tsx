@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import { BlockObjectResponse, PageObjectResponse, RichTextItemResponse } from '@notionhq/client/build/src/api-endpoints';
 import { notionapi } from '@/lib/notion';
 import { NotionPageRenderer } from '@/components/notionrenderer';
-
+export const runtime = 'edge';
 type Props = {
   params: {
     id: string;

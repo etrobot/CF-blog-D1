@@ -1,7 +1,7 @@
 import PageList from '@/components/pagelist';
 import { Suspense } from 'react';
 import { notionapi } from '@/lib/notion';
-import  LandingPage  from '@/components/landingPage';
+export const runtime = 'edge';
 // Fetch the notes data
 async function fetchNotes(year?: number) {
   return await notionapi.getPages('descending', undefined, year);
