@@ -46,7 +46,7 @@ export default async function Home({
           <select
             name="cat"
             defaultValue={selectedCategory}
-            className="px-4 py-2 border rounded text-black"
+            className="px-4 py-2 border rounded"
           >
             <option value="" >All Categories</option>
             {categories.map((category) => (
@@ -58,7 +58,7 @@ export default async function Home({
           <select
             name="tier"
             defaultValue={selectedTier}
-            className="px-4 py-2 border rounded text-black"
+            className="px-4 py-2 border rounded"
           >
             <option value="">All Tiers</option>
             <option value="0">Free</option>

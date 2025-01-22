@@ -34,7 +34,7 @@ export default function FilterControls({
         onChange={(e) => router.push(buildUrl({ category: e.target.value, page: '1' }))}
         value={currentCategory || 'all'}
       >
-        <option value="all">所有分类</option>
+        <option value="all">All Categories</option>
         {categories.map(({ category }) => (
           <option key={category} value={category}>{category}</option>
         ))}
@@ -45,7 +45,7 @@ export default function FilterControls({
         onChange={(e) => router.push(buildUrl({ tier: e.target.value, page: '1' }))}
         value={currentTier || 'all'}
       >
-        <option value="all">所有等级</option>
+        <option value="all">Paid or Free</option>
         {tiers.map((tier) => (
           <option key={tier} value={tier}>{tier}</option>
         ))}
